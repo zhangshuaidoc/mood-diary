@@ -13,7 +13,7 @@
       <view class="recorded-info">
         <view class="recorded-mood-name">{{selectedMood.name}}</view>
         <view class="recorded-text" wx:if="{{todayRecord.text}}">{{todayRecord.text}}</view>
-        <view class="recorded-time">记录于 {{todayRecord.createTime | formatTime}}</view>
+        <view class="recorded-time">记录于 {{todayRecord.createTimeStr}}</view>
       </view>
     </view>
     
