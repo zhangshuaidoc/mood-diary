@@ -19,16 +19,16 @@
   <!-- 日历网格 -->
   <view class="calendar-grid">
     <view 
-      class="day-item {{day.isCurrentMonth ? '' : 'empty'}} {{day.isToday ? 'today' : ''}} {{selectedDate === day.date ? 'selected' : ''}}"
+      class="day-item {{item.isCurrentMonth ? '' : 'empty'}} {{item.isToday ? 'today' : ''}} {{selectedDate === item.date ? 'selected' : ''}}"
       wx:for="{{calendarData}}"
       wx:key="date"
-      data-day="{{day}}"
+      data-day="{{item}}"
       bindtap="onDayTap"
     >
       <view class="day-content">
-        <text class="day-number" wx:if="{{!day.record}}">{{day.day}}</text>
-        <view class="day-emoji" wx:if="{{day.record}}">{{day.record.moodEmoji}}</view>
-        <view class="today-dot" wx:if="{{day.isToday && !day.record}}"></view>
+        <text class="day-number" wx:if="{{!item.record}}">{{item.day}}</text>
+        <view class="day-emoji" wx:if="{{item.record}}">{{item.record.moodEmoji}}</view>
+        <view class="today-dot" wx:if="{{item.isToday && !item.record}}"></view>
       </view>
     </view>
   </view>
@@ -39,7 +39,7 @@
       <view class="detail-header">
         <view class="detail-emoji">{{selectedRecord.moodEmoji}}</view>
         <view class="detail-info">
-          <view class="detail-mood">{{selectedRecord.mood | moodName}}</view>
+          <view class="detail-mood">{{selectedRecord.moodName}}</view>
           <view class="detail-date">{{selectedRecord.date}}</view>
         </view>
       </view>
@@ -49,7 +49,7 @@
       </view>
       
       <view class="detail-time">
-        记录于 {{selectedRecord.createTime | formatDateTime}}
+        记录于 {{selectedRecord.createTimeStr}}
       </view>
       
       <view class="detail-actions">
