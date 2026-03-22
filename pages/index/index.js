@@ -41,7 +41,10 @@ Page({
       const mood = moodUtil.getMoodByType(record.mood)
       this.setData({
         hasRecord: true,
-        todayRecord: record,
+        todayRecord: {
+          ...record,
+          createTimeStr: dateUtil.formatTime(record.createTime)
+        },
         selectedMood: mood,
         text: record.text || '',
         isEditing: false
