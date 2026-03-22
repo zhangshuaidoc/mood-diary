@@ -60,12 +60,24 @@ Page({
 
   onDayTap(e) {
     const { day } = e.currentTarget.dataset
-    if (!day.isCurrentMonth) return
+    // 检查 day 是否存在且是当前月份
+    if (!day || !day.isCurrentMonth) return
+    
+    // 格式化记录数据用于显示
+    let selectedRecord = null
+    if (day.record) {
+      const moodInfo = moodUtil.getMoodByType(day.record.mood)
+      selectedRecord = {
+        ...day.record,
+        moodName: moodInfo ? moodInfo.name : day.record.mood,
+        createTimeStr: dateUtil.formatDateTime(day.record.createTime)
+      }
+    }
     
     this.setData({
       selectedDate: day.date,
-      selectedRecord: day.record,
-      showDetail: !!day.record
+      selectedRecord: selectedRecord,
+      showDetail: !!selectedRecord
     })
   },
 
