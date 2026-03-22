@@ -1,0 +1,182 @@
+/* pages/mine/mine.wxss */
+
+.container {
+  padding: 32rpx;
+  min-height: 100vh;
+  background: #F7F7F7;
+}
+
+/* 统计卡片 */
+.stats-card {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+
+.stats-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.stats-total {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.stats-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.mood-stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mood-stat-left {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  width: 140rpx;
+}
+
+.mood-stat-emoji {
+  font-size: 36rpx;
+}
+
+.mood-stat-name {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.mood-stat-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.mood-stat-bar-bg {
+  flex: 1;
+  height: 16rpx;
+  background: #F0F0F0;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.mood-stat-bar {
+  height: 100%;
+  border-radius: 8rpx;
+  transition: width 0.3s ease;
+}
+
+.mood-stat-count {
+  width: 80rpx;
+  text-align: right;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.empty-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48rpx 0;
+}
+
+.empty-emoji {
+  font-size: 64rpx;
+  margin-bottom: 16rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 数据概览 */
+.overview-card {
+  display: flex;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+}
+
+.overview-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.overview-value {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #6BCB77;
+  margin-bottom: 8rpx;
+}
+
+.overview-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.overview-divider {
+  width: 2rpx;
+  background: #E5E5E5;
+  margin: 0 32rpx;
+}
+
+/* 设置列表 */
+.settings-card {
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  padding: 32rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+}
+
+.settings-icon {
+  font-size: 36rpx;
+  margin-right: 24rpx;
+}
+
+.settings-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.settings-arrow {
+  font-size: 32rpx;
+  color: #CCC;
+}
+
+.settings-value {
+  font-size: 28rpx;
+  color: #999;
+}

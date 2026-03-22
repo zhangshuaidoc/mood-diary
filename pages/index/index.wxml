@@ -1,0 +1,71 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 日期显示 -->
+  <view class="date-section">
+    <view class="date-text">{{todayDateCN}}</view>
+    <view class="date-hint" wx:if="{{!hasRecord}}">今天的心情如何？</view>
+  </view>
+
+  <!-- 已记录状态 -->
+  <view class="recorded-section" wx:if="{{hasRecord && !isEditing}}">
+    <view class="recorded-card">
+      <view class="recorded-emoji">{{todayRecord.moodEmoji}}</view>
+      <view class="recorded-info">
+        <view class="recorded-mood-name">{{selectedMood.name}}</view>
+        <view class="recorded-text" wx:if="{{todayRecord.text}}">{{todayRecord.text}}</view>
+        <view class="recorded-time">记录于 {{todayRecord.createTime | formatTime}}</view>
+      </view>
+    </view>
+    
+    <view class="action-buttons">
+      <button class="btn-edit" bindtap="onEdit">修改记录</button>
+      <button class="btn-delete" bindtap="onDelete">删除</button>
+    </view>
+  </view>
+
+  <!-- 编辑/新增状态 -->
+  <view class="edit-section" wx:if="{{!hasRecord || isEditing}}">
+    <!-- 心情选择器 -->
+    <view class="mood-picker">
+      <view class="mood-title">选择心情</view>
+      <view class="mood-grid">
+        <view 
+          class="mood-item {{selectedMood.type === item.type ? 'selected' : ''}}"
+          wx:for="{{moods}}"
+          wx:key="type"
+          data-mood="{{item}}"
+          bindtap="onMoodSelect"
+          style="--mood-color: {{item.color}}"
+        >
+          <view class="mood-emoji">{{item.emoji}}</view>
+          <view class="mood-name">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 文字输入 -->
+    <view class="text-input-section">
+      <view class="text-input-header">
+        <text class="text-input-title">一句话描述（可选）</text>
+        <text class="text-counter">{{text.length}}/{{maxLength}}</text>
+      </view>
+      <textarea 
+        class="text-input"
+        placeholder="用一句话描述今天的心情..."
+        maxlength="{{maxLength}}"
+        value="{{text}}"
+        bindinput="onTextInput"
+        auto-height
+      />
+    </view>
+
+    <!-- 保存按钮 -->
+    <button class="btn-save" bindtap="onSave">
+      {{hasRecord ? '保存修改' : '保存记录'}}
+    </button>
+    
+    <button class="btn-cancel" wx:if="{{isEditing}}" bindtap="onCancelEdit">
+      取消
+    </button>
+  </view>
+</view>

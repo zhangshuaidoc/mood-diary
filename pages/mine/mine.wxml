@@ -1,0 +1,64 @@
+<!--pages/mine/mine.wxml-->
+<view class="container">
+  <!-- 统计卡片 -->
+  <view class="stats-card">
+    <view class="stats-header">
+      <view class="stats-title">本月心情统计</view>
+      <view class="stats-total">共 {{stats.total}} 条记录</view>
+    </view>
+    
+    <view class="stats-content" wx:if="{{moodStats.length > 0}}">
+      <view class="mood-stat-item" wx:for="{{moodStats}}" wx:key="type">
+        <view class="mood-stat-left">
+          <text class="mood-stat-emoji">{{item.emoji}}</text>
+          <text class="mood-stat-name">{{item.name}}</text>
+        </view>
+        <view class="mood-stat-right">
+          <view class="mood-stat-bar-bg">
+            <view class="mood-stat-bar" style="width: {{item.percent}}%; background-color: {{item.color}};"></view>
+          </view>
+          <text class="mood-stat-count">{{item.count}}次</text>
+        </view>
+      </view>
+    </view>
+    
+    <view class="empty-stats" wx:else>
+      <text class="empty-emoji">📝</text>
+      <text class="empty-text">本月还没有记录哦</text>
+    </view>
+  </view>
+
+  <!-- 数据概览 -->
+  <view class="overview-card">
+    <view class="overview-item">
+      <text class="overview-value">{{totalRecords}}</text>
+      <text class="overview-label">总记录数</text>
+    </view>
+    <view class="overview-divider"></view>
+    <view class="overview-item">
+      <text class="overview-value">{{stats.total}}</text>
+      <text class="overview-label">本月记录</text>
+    </view>
+  </view>
+
+  <!-- 设置列表 -->
+  <view class="settings-card">
+    <view class="settings-item" bindtap="onClearData">
+      <text class="settings-icon">🗑️</text>
+      <text class="settings-text">清除所有数据</text>
+      <text class="settings-arrow">›</text>
+    </view>
+    
+    <view class="settings-item" bindtap="onAbout">
+      <text class="settings-icon">ℹ️</text>
+      <text class="settings-text">关于我们</text>
+      <text class="settings-arrow">›</text>
+    </view>
+    
+    <view class="settings-item">
+      <text class="settings-icon">📱</text>
+      <text class="settings-text">版本</text>
+      <text class="settings-value">v{{version}}</text>
+    </view>
+  </view>
+</view>
